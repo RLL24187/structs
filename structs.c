@@ -33,16 +33,20 @@ struct villager {
 // Write a function that returns an example of your struct when run.
 struct villager examplevillager(){
   srand(time(NULL));
-  char* names[] = {"Al", "Bert", "Carrie", "Dorothy", "Ellie", "Felix"};
+  char* names[] = {"Al", "Bert", "Carrie", "Dorothy", "Ellie", "Felix", "Zoe", "Yi", "Xin"};
   int x = rand() * 1000 + 1;
-  printf("Ex: \n Name: %s | ID: %d\n", names[x % 6], x);
+  printf("Ex: \n name: %s | id: %d\n\n", names[x % 10], x);
+  struct villager v;
+  v.name = names[x % 10];
+  v.id = x;
+  return v;
 }
 
 // Write a function that prints out variables of your structs type in a reasonable way.
-// struct villager printvillager(struct villager v){
-//   printf("name: %s | id: %d\n", v.name, v.id.);
-//   return v;
-// }
+struct villager printvillager(struct villager v){
+  printf("name: %s \t| id: %d\n", v.name, v.id);
+  return v;
+}
 //
 // // Write a function that modifies values of your struct's type.
 // struct villager changevillager(struct villager v; char* str; int i){
