@@ -31,32 +31,39 @@ struct villager {
 // time() is in <time.h>
 
 // Write a function that returns an example of your struct when run.
-struct villager examplevillager(){
+struct villager* examplevillager(){
   srand(time(NULL));
   char* names[] = {"Al", "Bert", "Carrie", "Dorothy", "Ellie", "Felix", "Zoe", "Yi", "Xin"};
   int x = rand() * 1000 + 1;
-  printf("Ex: \n name: %s | id: %d\n\n", names[x % 10], x);
+  printf("Ex: \nname: %s \t| id: %d\n\n", names[x % 10], x);
   struct villager v;
   v.name = names[x % 10];
   v.id = x;
-  return v;
+  struct villager* p = &v;
+  return p;
 }
 
 // Write a function that prints out variables of your structs type in a reasonable way.
-struct villager printvillager(struct villager v){
-  printf("name: %s \t| id: %d\n", v.name, v.id);
+struct villager* printvillager(struct villager *v){
+  printf("name: %s \t| id: %d\n", (*v).name, (*v).id);
   return v;
 }
-//
-// // Write a function that modifies values of your struct's type.
-// struct villager changevillager(struct villager v; char* str; int i){
-//   struct villager *p = &a;
-//   printf("Old name: %s\n", v.name);
-//   (*p).name = str;
-//   printf("New name: %s\n", v.name);
-//
-//   printf("Old id: %d\n", v.id);
-//   (*p).id = w;
-//   printf("New id: %d\n", v.id);
-//   return a;
-// }
+
+// Write a function that modifies values of your struct's type.
+struct villager* changevillager(struct villager *v, char* str, int i){
+  //struct villager *p = &v;
+
+  printf("Old name: %s\n", (*v).name);
+  printf("Old id: %d\n", (*v).id);
+
+  // (*p).name = str;
+  // (*p).id = i;
+
+  (*v).name = str;
+  (*v).id = i;
+
+  printf("New name: %s\n", (*v).name);
+  printf("New id: %d\n", (*v).id);
+
+  return v;
+}
